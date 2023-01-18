@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Azure Design System Website</title>
+    <!-- https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_prop_element_offsettop_sticky -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    />
+    <style>
+      .azure-header-panel {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 50px;
+        background-color: orange;
+      }
+      .azure-header-panel ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-left: 40px;
+      }
+      .azure-header-panel li {
+        padding: 0 10px;
+      }
+      .azure-header-panel a {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+      }
+      .azure-main-content {
+        padding-left: 250px;
+        padding-top: 50px;
+      }
+      .solaris-panel {
+        position: fixed;
+        left: 0;
+        top: 50px;
+        height: 100%;
+        width: 250px;
+        border: 1px solid olivedrab;
+        transition: width 0.6s ease;
+      }
+      .solaris-panel.collapsed {
+        width: 0px;
+        transition: width 0.3s ease;
+      }
+      .solaris-panel.collapsed .solaris-menu {
+        padding: 0;
+      }
+      .solaris-panel.collapsed .solaris-menu ul {
+        display: none;
+      }
+      .solaris-menu {
+        display: flex;
+        flex-direction: column;
+        width: inherit;
+      }
+      .solaris-menu-btn {
+        width: inherit;
+        height: 25px;
+      }
+      .hamburger-menu {
+        position: fixed;
+        left: 3px;
+        top: 10px;
+        font-size: 1.7rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="azure-header-panel">
+      <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">fsafd</a></li>
+      </ul>
+      <div class="hamburger-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+    <div class="solaris-panel" id="solaris-panel">
+      <div class="solaris-menu" id="solaris-menu">
+        <button class="solaris-menu-btn" id="button1">Button 1</button>
+        <button class="solaris-menu-btn" id="button2">Button 2</button>
+        <button class="solaris-menu-btn" id="button3">Button 3</button>
+      </div>
+    </div>
+    <div class="azure-main-content" id="azure-main-content">
+      <h1>Welcome to Azure Design System Website</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <div class="azure-card">
+        <div class="azure-card-image">
+          <img src="julemand.gif" alt="Azure logo" />
+        </div>
+        <div class="azure-card-body">
+          <h2>Azure Design System</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididuntm.
+          </p>
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+          t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />t<br />
+        </div>
+      </div>
+    </div>
+    <script>
+      let button1 = document.getElementById("button1");
+      let button2 = document.getElementById("button2");
+      let button3 = document.querySelector("#button3");
+
+      let solarisMenu = document.getElementById("solaris-panel");
+      let mainContent = document.getElementById("azure-main-content");
+
+      button1.addEventListener("click", function () {
+        button2.style.position = "fixed";
+        button2.style.top = solarisMenu.clientHeight - 50 + "px";
+        button3.style.position = "fixed";
+        button3.style.top = solarisMenu.clientHeight - 25 + "px";
+      });
+
+      button2.addEventListener("click", function () {
+        button2.style.position = "fixed";
+        button2.style.top = "75px";
+        button3.style.position = "fixed";
+        button3.style.top = solarisMenu.clientHeight - 25 + "px";
+      });
+
+      button3.addEventListener("click", function () {
+        button2.style.position = "fixed";
+        button2.style.top = "75px";
+        button3.style.position = "fixed";
+        button3.style.top = "100px";
+      });
+
+      // Get the hamburger menu
+      const hamburgerMenu = document.querySelector(".hamburger-menu");
+
+      // Add a click event listener to the hamburger menu
+      hamburgerMenu.addEventListener("click", (e) => {
+        // Toggle the collapsed class on the azure panel
+        const azurePanel = document.querySelector(".solaris-panel");
+        azurePanel.classList.toggle("collapsed");
+        button1.hidden = !button1.hidden;
+        button2.hidden = !button2.hidden;
+        button3.hidden = !button3.hidden;
+        if (
+          "" === mainContent.style.paddingLeft ||
+          "250px" === mainContent.style.paddingLeft
+        )
+          mainContent.style.paddingLeft = "10px";
+        else mainContent.style.paddingLeft = "250px";
+      });
+    </script>
+  </body>
+</html>
